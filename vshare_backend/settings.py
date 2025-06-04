@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rwil$=&b!!h*ol51ubwna0w1m-95#0j8rqt*jp9ids&!95!m3w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','chainsaw.pythonanywhere.com','www.chainsaw.pythonanywhere.com']
 
 
 # Application definition
