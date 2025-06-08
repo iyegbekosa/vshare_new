@@ -4,7 +4,7 @@ from .models import User, DriverProfile
 class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model  = User
-        fields = ('email', 'user_name', 'password', 'phone', 'first_name', 'last_name')
+        fields = ('email', 'password', 'phone', 'first_name', 'last_name')
         extra_kwargs = {'password':{'write_only':'True'}}
 
     def create(self, validated_data):
@@ -28,7 +28,7 @@ class RegisterDriverSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'email', 'user_name', 'password', 'phone',
+            'email', 'password', 'phone',
             'first_name', 'last_name', 'license_number',
             'plate_number', 'vehicle_color', 'vehicle_year',
             'vehicle_type', 'vehicle_model', 'documents'
