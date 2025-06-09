@@ -10,3 +10,5 @@ book rides -> https://chainsaw.pythonanywhere.com/rides/book
 available rides -> https://chainsaw.pythonanywhere.com/available/register_user
 accept rides (drivers) -> https://chainsaw.pythonanywhere.com/accept/int (there might be a slight error with this one)
 ride history (users) -> https://chainsaw.pythonanywhere.com/rides/my_rides
+
+user detail -> https://chainsaw.pythonanywhere.com/user/profile/
