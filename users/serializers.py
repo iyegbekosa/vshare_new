@@ -54,3 +54,9 @@ class RegisterDriverSerializer(serializers.ModelSerializer):
         DriverProfile.objects.create(user=user, **driver_fields)
 
         return user
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'user_name', 'first_name', 'last_name', 'phone', 'role', 'is_active']

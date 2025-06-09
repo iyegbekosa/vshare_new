@@ -2,10 +2,11 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import RegisterUserSerializer, RegisterDriverSerializer
+from .serializers import RegisterUserSerializer, RegisterDriverSerializer, UserProfileSerializer
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
 from .helper import get_tokens_for_user
+from rest_framework.permissions import IsAuthenticated
 
 
 class CustomUserCreate(APIView):
@@ -56,3 +57,11 @@ class DriverLoginView(APIView):
             return Response({"detail": "Invalid driver credentials."}, status=401)
 
         return Response(get_tokens_for_user(user), status=200)
+    
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserProfileSerializer(request.user)
+        return Response(serializer.data)
