@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
     objects = CustomAccountManager()
     USERNAME_FIELD = 'email'

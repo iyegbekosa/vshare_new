@@ -9,13 +9,15 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
+        validated_data['role'] = 'rider'
         instance = self.Meta.model(**validated_data)
-        if password is not None:
+        if password:
             instance.set_password(password)
         instance.save()
         return instance
+    
 
-
+    
 class RegisterDriverSerializer(serializers.ModelSerializer):
     license_number = serializers.CharField()
     plate_number = serializers.CharField()

@@ -7,6 +7,8 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
 from .helper import get_tokens_for_user
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import check_password
 
 
 class CustomUserCreate(APIView):
@@ -42,7 +44,28 @@ class RiderLoginView(APIView):
             return Response({"detail": "Invalid rider credentials."}, status=401)
 
         return Response(get_tokens_for_user(user), status=200)
-    
+
+
+# User = get_user_model()
+
+# class RiderLoginView(APIView):
+#     def post(self, request):
+#         email = request.data.get("email")
+#         password = request.data.get("password")
+
+#         if not email or not password:
+#             return Response({"detail": "Email and password are required."}, status=400)
+
+#         try:
+#             user = User.objects.get(email=email)
+#         except User.DoesNotExist:
+#             return Response({"detail": "Invalid email."}, status=401)
+
+#         if not user.check_password(password) or user.role != 'rider':
+#             return Response({"detail": "Invalid password or user role."}, status=401)
+
+#         return Response(get_tokens_for_user(user), status=200)
+
 
 class DriverLoginView(APIView):
     def post(self, request):

@@ -8,8 +8,7 @@ def get_tokens_for_user(user):
         "user": {
             "id": user.id,
             "email": user.email,
-            "username": user.user_name,
             "role": user.role,
-            "is_verified": user.is_verified
+            "is_active": user.is_active
         }
     }
