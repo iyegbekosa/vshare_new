@@ -55,7 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['phone', 'first_name','last_name']
 
     def __str__(self):
-        return self.first_name
+        return self.email
 
 class DriverProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

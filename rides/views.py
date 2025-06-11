@@ -24,7 +24,6 @@ class AvailableRidesView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Only drivers should call this
         user = self.request.user
         if user.role != 'driver':
             return Ride.objects.none()
