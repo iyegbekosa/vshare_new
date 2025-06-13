@@ -17,7 +17,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         return instance
     
 
-    
+
 class RegisterDriverSerializer(serializers.ModelSerializer):
     license_number = serializers.CharField()
     plate_number = serializers.CharField()
@@ -61,4 +61,4 @@ class RegisterDriverSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'user_name', 'first_name', 'last_name', 'phone', 'role', 'is_active']
+        fields = ['id', 'email', 'first_name', 'last_name', 'phone', 'role', 'is_active']
