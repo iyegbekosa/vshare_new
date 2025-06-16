@@ -9,6 +9,7 @@ from .helper import get_tokens_for_user
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class CustomUserCreate(APIView):
@@ -88,3 +89,15 @@ class UserProfileView(APIView):
     def get(self, request):
         serializer = UserProfileSerializer(request.user)
         return Response(serializer.data)
+    
+
+class BlacklistTokenView(APIView):
+    permission_classes=[AllowAny]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            token=RefreshToken(refresh_token)
+            token.blacklist()
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)

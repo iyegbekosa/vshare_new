@@ -1,7 +1,7 @@
 app_name = 'users'
 
 from django.urls import path
-from .views import CustomUserCreate, CustomDriverCreate, RiderLoginView, DriverLoginView, UserProfileView
+from .views import CustomUserCreate, CustomDriverCreate, RiderLoginView, DriverLoginView, UserProfileView, BlacklistTokenView
 
 urlpatterns = [
     path('register_user', CustomUserCreate.as_view(), name='register_user'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('login_user', RiderLoginView.as_view(), name='login_user'),
     path('login_driver', DriverLoginView.as_view(), name='login_driver'),
     path('profile/', UserProfileView.as_view(), name='user_profile'),
+    #path('logout', BlacklistTokenView.as_view(), name='blacklist'),
 ]
